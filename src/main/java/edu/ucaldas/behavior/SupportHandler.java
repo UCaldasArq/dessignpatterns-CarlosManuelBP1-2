@@ -9,7 +9,49 @@ package edu.ucaldas.behavior;
 
 public class SupportHandler {
     public static Handler createChain() {
-        // TODO: crea la cadena: Basic → Supervisor → Manager
-        return null;
+        BasicSupportHandler basic = new BasicSupportHandler();
+        SupervisorHandler supervisor = new SupervisorHandler();
+        ManagerHandler manager = new ManagerHandler();
+
+        basic.setNext(supervisor);
+        supervisor.setNext(manager);
+
+        return basic;
+    }
+
+    // Manejador para solicitudes básicas
+    private static class BasicSupportHandler extends Handler {
+        @Override
+        public String handleRequest(String request) {
+            if ("básica".equals(request)) {
+                return "Atendido por Soporte Básico";
+            }
+            if (next != null) return next.handleRequest(request);
+            return "No se puede atender la solicitud.";
+        }
+    }
+
+    // Manejador para solicitudes intermedias
+    private static class SupervisorHandler extends Handler {
+        @Override
+        public String handleRequest(String request) {
+            if ("intermedia".equals(request)) {
+                return "Atendido por Supervisor";
+            }
+            if (next != null) return next.handleRequest(request);
+            return "No se puede atender la solicitud.";
+        }
+    }
+
+    // Manejador para solicitudes avanzadas
+    private static class ManagerHandler extends Handler {
+        @Override
+        public String handleRequest(String request) {
+            if ("avanzada".equals(request)) {
+                return "Atendido por Gerente";
+            }
+            if (next != null) return next.handleRequest(request);
+            return "No se puede atender la solicitud.";
+        }
     }
 }

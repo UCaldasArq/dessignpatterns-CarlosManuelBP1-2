@@ -1,9 +1,15 @@
 package edu.ucaldas.creational;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShapeFactoryTest {
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("=== Ejercicio 1: Factory Method (ShapeFactory) ===");
+    }
 
     @Test
     public void testCircleCreation() {

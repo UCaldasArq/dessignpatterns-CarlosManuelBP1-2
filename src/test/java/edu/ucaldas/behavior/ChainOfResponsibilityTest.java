@@ -1,8 +1,15 @@
 package edu.ucaldas.behavior;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ChainOfResponsibilityTest {
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("=== Ejercicio: Chain of Responsibility (SupportHandler) ===");
+    }
 
     @Test
     public void testBasicRequest() {
